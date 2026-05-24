@@ -1,5 +1,5 @@
 
-baseURL = '/'
+baseURL = '/code-and-poetry-blog/'
 defaultContentLanguage = 'zh-cn'
 
 title = '代码与诗 | CodeAndPoetry'
