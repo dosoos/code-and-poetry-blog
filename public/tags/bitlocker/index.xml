@@ -1,0 +1,55 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>代码与诗 | CodeAndPoetry – BitLocker</title>
+    <link>/tags/bitlocker/</link>
+    <description>Recent content in BitLocker on 代码与诗 | CodeAndPoetry</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 15 Jun 2024 16:33:00 +0800</lastBuildDate>
+    
+	  <atom:link href="/tags/bitlocker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>BitLocker加密硬盘解锁失败？云端恢复流程详解</title>
+      <link>/posts/bitlocker-drive-recovery-guide/</link>
+      <pubDate>Sat, 15 Jun 2024 16:33:00 +0800</pubDate>
+      
+      <guid>/posts/bitlocker-drive-recovery-guide/</guid>
+      <description>
+        
+        
+        &lt;p&gt;上周二凌晨，某SaaS公司运维群突发告警：一台部署CI/CD流水线的Windows Server 2022服务器，因主板TPM模块固件异常，导致BitLocker无法验证启动密钥，系统卡死在恢复环境界面。管理员手头仅有加密卷快照，无Azure AD同步密钥，亦未导出BEK文件。&lt;/p&gt;
+&lt;p&gt;这是企业级加密中少有人提及的风险点：&lt;strong&gt;硬件依赖型加密一旦底层组件失联，合法访问权即刻悬置&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;BitLocker本身不存储密码，而是保护「卷主密钥（VMK）」，后者由TPM/USB/恢复密钥协同解封。当TPM不可信时，唯一合法路径是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用备份恢复密钥（.bek文件）手动解封；&lt;/li&gt;
+&lt;li&gt;若无备份，则需借助支持BitLocker密钥派生逻辑的专用服务——前提是用户曾启用「密码保护」（即设置48位数字恢复密码）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;猫密网正是少数支持该场景的服务方之一：
+🔹 其后台可加载BitLocker元数据（$BITLK元文件），解析PBKDF2参数与盐值；
+🔹 结合用户提供的部分线索（如密码长度、数字范围、常见模式），大幅缩小搜索空间；
+🔹 全程在隔离沙箱中运行，原始磁盘镜像无需上传，仅需关键元数据片段。&lt;/p&gt;
+&lt;h3&gt;关键操作步骤&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;关键操作步骤&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%85%b3%e9%94%ae%e6%93%8d%e4%bd%9c%e6%ad%a5%e9%aa%a4&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;此章节的永久链接&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;manage-bde -protectors -get C:&lt;/code&gt;导出当前保护器信息（含ID与类型）；&lt;/li&gt;
+&lt;li&gt;截图或记录「Numerical Password」ID字段（如 &lt;code&gt;{F9A3E...}&lt;/code&gt;）；&lt;/li&gt;
+&lt;li&gt;访问&lt;a href=&#34;https://www.catpasswd.com/recovery&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;猫密网BitLocker支持页&lt;/a&gt;，提交ID与基础线索；&lt;/li&gt;
+&lt;li&gt;系统将返回匹配的48位恢复密码，用于&lt;code&gt;manage-bde -unlock&lt;/code&gt;指令。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;⚠️ 法律声明：猫密网严格遵循微软BitLocker技术白皮书规范，仅处理用户主动提交的、具备合法所有权证明的元数据。不支持绕过TPM强制策略或伪造身份验证。详细合规说明见&lt;a href=&#34;https://www.catpasswd.com/recovery&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;官网政策页&lt;/a&gt;。&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;加密不是黑盒，它的可恢复性，才是企业数据韧性真正的底座。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

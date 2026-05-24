@@ -1,0 +1,52 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>代码与诗 | CodeAndPoetry – 开源工具</title>
+    <link>/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 开源工具 on 代码与诗 | CodeAndPoetry</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 16 Jun 2024 08:41:00 +0800</lastBuildDate>
+    
+	  <atom:link href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>7z文件密码丢失应急处理：从上传到结果查询全记录</title>
+      <link>/posts/7z-password-emergency-response/</link>
+      <pubDate>Sun, 16 Jun 2024 08:41:00 +0800</pubDate>
+      
+      <guid>/posts/7z-password-emergency-response/</guid>
+      <description>
+        
+        
+        &lt;p&gt;一位专注区块链中间件的Golang开发者，习惯每周用&lt;code&gt;7z a -p -mhe=on&lt;/code&gt;命令对Git仓库打包加密。上周日执行备份后，他顺手清空了终端历史——连密码提示语都一并消失。而该7z包含3个核心合约ABI文件与最新测试网配置，重编译需4小时以上。&lt;/p&gt;
+&lt;p&gt;7z的&lt;code&gt;-mhe=on&lt;/code&gt;（Header Encryption）选项使问题升级：它不仅加密内容，还加密文件头，导致多数工具无法识别压缩结构，直接报“未知格式”。&lt;/p&gt;
+&lt;h3&gt;猫密网如何应对高混淆7z？&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;猫密网如何应对高混淆7z&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%8c%ab%e5%af%86%e7%bd%91%e5%a6%82%e4%bd%95%e5%ba%94%e5%af%b9%e9%ab%98%e6%b7%b7%e6%b7%867z&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;此章节的永久链接&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;自研7z结构探测器，可穿透加密头部，定位&lt;code&gt;7zSFX&lt;/code&gt;签名与&lt;code&gt;Coders&lt;/code&gt;段偏移；&lt;/li&gt;
+&lt;li&gt;支持LZMA2/LZMA/PPMD等多种压缩算法联动分析；&lt;/li&gt;
+&lt;li&gt;对&lt;code&gt;-p&lt;/code&gt;生成的密码哈希（SHA-256 + 524288次迭代），内置优化爆破路径，避免无效计算。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;开发者友好型操作流&lt;span class=&#34;hx:absolute hx:-mt-20&#34; id=&#34;开发者友好型操作流&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%bc%80%e5%8f%91%e8%80%85%e5%8f%8b%e5%a5%bd%e5%9e%8b%e6%93%8d%e4%bd%9c%e6%b5%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;此章节的永久链接&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;验证文件完整性&lt;/strong&gt;：&lt;code&gt;7z t archive.7z&lt;/code&gt; 若提示“Can&amp;rsquo;t open as archive”，说明Header已加密，需专业处理；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上传至&lt;a href=&#34;https://www.catpasswd.com/recovery&#34;target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;猫密网7z专区&lt;/a&gt;&lt;/strong&gt;，勾选「启用Header解密分析」；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置线索&lt;/strong&gt;（可选）：如密码含项目代号&lt;code&gt;chainlink&lt;/code&gt;或年份&lt;code&gt;2024&lt;/code&gt;，可显著缩短耗时；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结果页下载JSON报告&lt;/strong&gt;：含恢复密码、所用算法、迭代次数与哈希摘要，便于审计与复现。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;💡 小技巧：猫密网提供API接入文档（/api/docs），支持CI/CD流水线集成自动恢复调用。开发者可将其纳入备份策略的Fail-Safe环节。&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;真正的工程严谨，既包括加密时的审慎，也涵盖遗忘时的从容。下次&lt;code&gt;7z a&lt;/code&gt;之前，或许该先写一行&lt;code&gt;echo &amp;quot;pwd: xxx&amp;quot; &amp;gt;&amp;gt; backup.log&lt;/code&gt;。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

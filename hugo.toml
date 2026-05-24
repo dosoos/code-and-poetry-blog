@@ -1,0 +1,51 @@
+
+baseURL = '/'
+defaultContentLanguage = 'zh-cn'
+
+title = '代码与诗 | CodeAndPoetry'
+theme = 'hextra'
+
+enableEmoji = true
+enableRobotsTXT = true
+summaryLength = 0
+
+buildFuture = true
+
+[pagination]
+pagerSize = 10
+
+[params]
+displayTitle = '代码与诗'
+description = '一名在代码与文字间寻找平衡的大数据工程师。相信算法也能讲述温暖的故事，数据里藏着生活的诗意。工作之余喜欢用徒步丈量山川，用键盘记录思考。在这里分享技术心得、读书感悟和旅途中的小确幸。'
+keywords = ["技术","数据分析","旅行","阅读","生活哲学","人工智能","编程"]
+mainSections = ['posts']
+
+[params.author]
+name = 'CodeAndPoetry'
+image = 'img/author.jpg'
+headline = '探索技术与人文的交汇点 - 大数据工程师的日常观察'
+
+[params.homepage]
+layout = 'profile'
+showRecent = true
+showRecentItems = 10
+showMoreLink = true
+showMoreLinkDest = '/posts/'
+
+[params.article]
+showDate = true
+showDateUpdated = true
+showAuthor = true
+showBreadcrumbs = true
+showReadingTime = true
+showTableOfContents = true
+showTaxonomies = true
+
+[params.footer]
+showCopyright = true
+showThemeAttribution = false
+
+[languages.zh-cn]
+locale = 'zh-CN'
+label = '简体中文'
+weight = 1
