@@ -26,13 +26,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Ensure Hextra theme
-        run: |
-          if [ ! -f themes/hextra/theme.toml ]; then
-            git submodule update --init --recursive themes/hextra || \
-              git clone --depth 1 https://github.com/imfing/hextra.git themes/hextra
-          fi
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
